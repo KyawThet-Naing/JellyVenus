@@ -1,5 +1,6 @@
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '/utils/app_const.dart';
 
 class Home extends StatefulWidget {
@@ -12,13 +13,21 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: WebviewScaffold(
-        url: AppConst.url,
-        withLocalStorage: true,
-        withJavascript: true,
-        initialChild: Center(
-          child: CircularProgressIndicator(),
+    return SafeArea(
+      child: WillPopScope(
+        onWillPop: () {
+          SystemNavigator.pop();
+          return Future.value(false);
+        },
+        child: const Scaffold(
+          body: WebviewScaffold(
+            url: AppConst.url,
+            withLocalStorage: true,
+            withJavascript: true,
+            initialChild: Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
         ),
       ),
     );

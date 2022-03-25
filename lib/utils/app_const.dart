@@ -1,3 +1,3 @@
 class AppConst {
-  static const String url = 'https://jellyvenus.com/';
+   static const String url = 'https://jellyvenus.com/';
 }

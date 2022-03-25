@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import '/pages/home.dart';
 
-void main() => runApp(const JellyVenus());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const JellyVenus());
+}
 
 class JellyVenus extends StatelessWidget {
   const JellyVenus({Key? key}) : super(key: key);
